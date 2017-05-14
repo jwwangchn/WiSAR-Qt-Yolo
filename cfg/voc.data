@@ -1,0 +1,6 @@
+classes= 1
+train  = /home/amax/fkm/YOLO2/train.txt
+valid  = /home/amax/fkm/YOLO2/2007_test.txt
+names = data/voc.names
+backup = backup
+

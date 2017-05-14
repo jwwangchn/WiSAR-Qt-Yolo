@@ -1,0 +1,6 @@
+*.mp4
+*.MOV
+*.weights
+*.pro
+*.pro.user
+main.cpp
