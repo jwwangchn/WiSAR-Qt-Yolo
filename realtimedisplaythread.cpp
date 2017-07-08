@@ -25,7 +25,7 @@ RealTimeDisplayThread::~RealTimeDisplayThread()
 void RealTimeDisplayThread::run()
 {
 
-    if(!setupWebcam(1))
+    if(!setupWebcam(0))
     {
         cout<<"Cannot open Camera.\n";
         return;
@@ -57,7 +57,7 @@ void RealTimeDisplayThread::run()
 //            {
 //                vwriter->release();
 //            }
-            vwriter = new VideoWriter(currentDateTime,CV_FOURCC('X','V','I','D'), 25, currentFrame.size());
+            vwriter = new VideoWriter(currentDateTime,CV_FOURCC('X','V','I','D'), 60, currentFrame.size());
 
             if(vwriter->isOpened())
             {
@@ -117,7 +117,7 @@ void RealTimeDisplayThread::run()
         cvtColor(currentFrame, currentFrame, CV_BGR2RGB);
         QImage imageQ((unsigned char*)currentFrame.data,currentFrame.cols,currentFrame.rows,currentFrame.cols*3,QImage::Format_RGB888);
         emit transmitCurrentFrame(imageQ);
-        msleep(35);
+        msleep(12);
     }
     if(vwriter->isOpened())
         vwriter->release();
