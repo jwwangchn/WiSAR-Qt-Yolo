@@ -25,7 +25,7 @@ RealTimeDisplayThread::~RealTimeDisplayThread()
 void RealTimeDisplayThread::run()
 {
 
-    if(!setupWebcam(0))
+    if(!setupWebcam(VIDEO_FILE))
     {
         cout<<"Cannot open Camera.\n";
         return;

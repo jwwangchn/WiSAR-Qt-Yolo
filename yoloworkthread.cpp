@@ -8,7 +8,7 @@ extern int DISPLAY_HEIGHT;
 extern QMutex mutex;
 extern Mat currentFrameCopy;
 Mat frameInUse;
-YoloWorkThread::YoloWorkThread():roiRect(QRect(0,0,1280,720))
+YoloWorkThread::YoloWorkThread():roiRect(QRect(0,0,3840,2160))
 {
     p = NULL;
     vcap = NULL;
@@ -119,8 +119,10 @@ bool YoloWorkThread::detectOnWebCam()
                 frameInUse = currentFrameCopy.clone();//DO NOT USE copyTO()function here!!!
                 mutex.unlock();
 
+
                 mutex.lock();
                 cv::Rect roi(this->roiRect.x(),this->roiRect.y(),this->roiRect.width(),this->roiRect.height());
+
                 mutex.unlock();
                 Mat roi_(frameInUse, roi);
 //                roi_tmp.copyTo(roi);
@@ -137,8 +139,7 @@ bool YoloWorkThread::detectOnWebCam()
 
                 int numObjects = 0;
                 // Detect the objects in the image
-                p->Detect(
-                            arapahoImage,
+                p->Detect(arapahoImage,
                             0.24,
                             0.5,
                             numObjects);
@@ -155,9 +156,7 @@ bool YoloWorkThread::detectOnWebCam()
                         //                    return -1;
                         break;
                     }
-                    p->GetBoxes(
-                                boxes,
-                                numObjects);
+                    p->GetBoxes(boxes,numObjects);
                     for(int i = 0; i<numObjects;i++)
                     {
                         // cv::Scalar()

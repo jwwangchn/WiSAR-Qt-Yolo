@@ -19,28 +19,11 @@ int DISPLAY_WIDTH = 720;
 int DISPLAY_HEIGHT=440;
 
 bool needProcess = false;
-//
-// Some utility functions
-//
-
-
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     MainWindow w;
-
-//    Mat image = imread("test.png");
-//    if(image.empty())
-//    {
-//        cout<<"Read Image Error!\n";
-//        return -1;
-//    }
-//    cvtColor(image,image,CV_BGR2RGB);
-//    cout<<image.channels()<<endl;
-
-
-    //CandidateGraphicsView myView(&w);
 
     w.show();
 
