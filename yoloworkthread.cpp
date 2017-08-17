@@ -8,7 +8,8 @@ extern int DISPLAY_HEIGHT;
 extern QMutex mutex;
 extern Mat currentFrameCopy;
 Mat frameInUse;
-YoloWorkThread::YoloWorkThread():roiRect(QRect(0,0,3840,2160))
+//YoloWorkThread::YoloWorkThread():roiRect(QRect(0,0,3840,2160))
+YoloWorkThread::YoloWorkThread():roiRect(QRect(0,0,1280,720))
 {
     p = NULL;
     vcap = NULL;

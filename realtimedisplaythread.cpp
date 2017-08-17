@@ -25,7 +25,7 @@ RealTimeDisplayThread::~RealTimeDisplayThread()
 void RealTimeDisplayThread::run()
 {
 
-    if(!setupWebcam(VIDEO_FILE))
+    if(!setupWebcam(1))
     {
         cout<<"Cannot open Camera.\n";
         return;
@@ -42,8 +42,6 @@ void RealTimeDisplayThread::run()
 
 
         vcap->read(currentFrame);
-
-
         switch(this->recordflag)
         {
         case 1:
